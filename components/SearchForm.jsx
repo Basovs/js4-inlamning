@@ -1,32 +1,35 @@
-import { useContext } from "react";
+import { useContext } from "react"
 
-import styled from "styled-components";
-import BtnFilled from "./BtnFilled";
-import { SearchContext } from "../contexts/SearchContextProvider";
+import styled from "styled-components"
+import BtnFilled from "./BtnFilled"
+import { SearchContext } from "../contexts/SearchContextProvider"
 
 const SearchForm = () => {
-  const { setSearchFor } = useContext(SearchContext);
+  const { setSearchFor } = useContext(SearchContext)
 
   const handleOnSubmit = e => {
-    e.preventDefault();
-  };
+    e.preventDefault()
+  }
 
   return (
     <MyComponent onSubmit={handleOnSubmit}>
       <input
         type="text"
         placeholder="Atrast sludinājumu"
-        onChange={e => setSearchFor(e.target.value)}
+        onChange={e => setSearchFor(e.target.value.toLowerCase())}
       />
 
       <BtnFilled title="Search" />
     </MyComponent>
-  );
-};
+  )
+}
 
-export default SearchForm;
+export default SearchForm
 
 const MyComponent = styled.form`
+  position: sticky;
+  top: 20px;
+
   inline-size: 100%;
   max-inline-size: 600px;
   margin: 0 auto;
@@ -47,4 +50,4 @@ const MyComponent = styled.form`
       font-weight: 300;
     }
   }
-`;
+`

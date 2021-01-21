@@ -1,5 +1,7 @@
-import { createGlobalStyle, ThemeProvider } from "styled-components";
-import SearchContextProvider from "../contexts/SearchContextProvider";
+import { createGlobalStyle, ThemeProvider } from "styled-components"
+import SearchContextProvider from "../contexts/SearchContextProvider"
+
+import Layout from "../components/Layout"
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -21,6 +23,13 @@ const GlobalStyle = createGlobalStyle`
     --light-gray-color:#F2F2F2;
     --mid-gray-color:#A1A3A5;
     --dark-gray-color:#231f20;
+  }
+
+  h2{
+    margin: 30px 0;
+  }
+  p{
+    margin: 10px 0;
   }
 
   input[type=submit]{
@@ -113,7 +122,7 @@ const GlobalStyle = createGlobalStyle`
     background: #555;
     cursor: pointer;
   }
-`;
+`
 const theme = {
   colors: {
     bright: {
@@ -135,7 +144,7 @@ const theme = {
       },
     },
   },
-};
+}
 
 function Index({ Component, pageProps }) {
   return (
@@ -143,11 +152,13 @@ function Index({ Component, pageProps }) {
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <SearchContextProvider>
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </SearchContextProvider>
       </ThemeProvider>
     </>
-  );
+  )
 }
 
-export default Index;
+export default Index
