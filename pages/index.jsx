@@ -1,8 +1,16 @@
+import { useEffect, useContext } from "react"
 import Head from "next/head"
 import JobList from "../components/JobList"
 import SearchForm from "../components/SearchForm"
+import { SearchContext } from "../contexts/SearchContextProvider"
 
 export default function Home() {
+  const { setIsSearching } = useContext(SearchContext)
+
+  useEffect(() => {
+    setIsSearching(false)
+  }, [])
+
   return (
     <>
       <Head>

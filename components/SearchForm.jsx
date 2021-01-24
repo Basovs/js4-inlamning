@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react"
+import Link from "next/link"
 
 import styled, { css } from "styled-components"
 import BtnFilled from "./BtnFilled"
@@ -62,9 +63,13 @@ const SearchForm = () => {
         {isSearching && (
           <MyInstantResultBox>
             {instantSearch[0] &&
-              jobList
-                ?.slice(0, 6)
-                .map(job => <h1 key={job.id}>{job.title}</h1>)}
+              jobList?.slice(0, 6).map(job => (
+                <Link key={job.id} href={`/${job.id}`}>
+                  <a>
+                    <h1>{job.title}</h1>
+                  </a>
+                </Link>
+              ))}
           </MyInstantResultBox>
         )}
       </MyInnerWrapper>
