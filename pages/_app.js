@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h2{
-    margin: 30px 0;
+    margin: 0 0 20px;
   }
   p{
     margin: 10px 0;

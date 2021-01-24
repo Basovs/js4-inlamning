@@ -22,13 +22,19 @@ const JobList = () => {
     <MyComponent>
       {jobList
         // ?.filter(job => job.description.toLowerCase().includes(searchFor))
-        .map(job => (
+        ?.map(job => (
           <Link key={job.id} href={`/${job.id}`}>
-            <MyJobItem>
-              <h2>{job.title}</h2>
-              {/* <p>{job.description}</p> */}
-              <div dangerouslySetInnerHTML={{ __html: job.description }} />
-            </MyJobItem>
+            <a>
+              <MyJobCard>
+                <h2>{job.title}</h2>
+                {/* <p>{job.description}</p> */}
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: job.description.substr(0, 300) + "...",
+                  }}
+                />
+              </MyJobCard>
+            </a>
           </Link>
         ))}
     </MyComponent>
@@ -38,15 +44,20 @@ const JobList = () => {
 export default JobList
 
 const MyComponent = styled.div`
-  /* display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr)); */
-  /* gap: 10px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 100px 0 0;
+  padding: 0 20px;
 `
 
-const MyJobItem = styled.div`
+const MyJobCard = styled.div`
   inline-size: 100%;
   max-inline-size: 600px;
-  margin: 0 auto;
+  margin: 20px 0;
   padding: 20px;
+  background-color: var(--light-gray-color);
+  border-radius: 10px;
   cursor: pointer;
 `

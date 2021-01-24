@@ -4,9 +4,11 @@ import BtnBack from "../components/BtnBack"
 const SpecificJobPage = ({ job }) => {
   return (
     <MyComponent>
-      <BtnBack />
-      <h1>{job.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: job.description }} />
+      <MyWrapper>
+        <BtnBack />
+        <h1>{job.title}</h1>
+        <div dangerouslySetInnerHTML={{ __html: job.description }} />
+      </MyWrapper>
     </MyComponent>
   )
 }
@@ -27,5 +29,11 @@ export async function getServerSideProps({ params }) {
 }
 
 const MyComponent = styled.div`
-  padding: 100px 0;
+  padding: 50px 0;
+`
+
+const MyWrapper = styled.div`
+  inline-size: 100%;
+  max-inline-size: 600px;
+  margin: 0 auto;
 `
