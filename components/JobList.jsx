@@ -48,8 +48,7 @@ const MyComponent = styled.div`
   flex-direction: column;
   align-items: center;
 
-  margin: 100px 0 0;
-  padding: 0 20px;
+  padding: 100px 20px 0;
 `
 
 const MyJobCard = styled.div`
