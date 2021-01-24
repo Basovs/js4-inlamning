@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useState, useContext } from "react"
 
 import styled from "styled-components"
 import BtnFilled from "./BtnFilled"
@@ -7,8 +7,12 @@ import { SearchContext } from "../contexts/SearchContextProvider"
 const SearchForm = () => {
   const { setSearchFor } = useContext(SearchContext)
 
+  const [value, setValue] = useState("")
+
   const handleOnSubmit = e => {
     e.preventDefault()
+
+    setSearchFor(value.replace(/ /g, "+"))
   }
 
   return (
@@ -16,7 +20,8 @@ const SearchForm = () => {
       <input
         type="text"
         placeholder="Atrast sludinājumu"
-        onChange={e => setSearchFor(e.target.value.toLowerCase())}
+        onChange={e => setValue(e.target.value.toLowerCase())}
+        value={value}
       />
 
       <BtnFilled title="Search" />
@@ -34,6 +39,7 @@ const MyComponent = styled.form`
   max-inline-size: 600px;
   margin: 0 auto;
   display: flex;
+  padding: 0 20px;
 
   input {
     background-color: var(--light-gray-color);

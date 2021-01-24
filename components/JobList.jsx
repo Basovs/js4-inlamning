@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react"
 import styled from "styled-components"
+import Link from "next/link"
 
 import { SearchContext } from "../contexts/SearchContextProvider"
 
@@ -19,15 +20,16 @@ const JobList = () => {
 
   return (
     <MyComponent>
-      {console.log(jobList)}
       {jobList
-        ?.filter(job => job.description.toLowerCase().includes(searchFor))
+        // ?.filter(job => job.description.toLowerCase().includes(searchFor))
         .map(job => (
-          <MyJobItem key={job.id}>
-            <h2>{job.title}</h2>
-            {/* <p>{job.description}</p> */}
-            <div dangerouslySetInnerHTML={{ __html: job.description }} />
-          </MyJobItem>
+          <Link key={job.id} href={`/${job.id}`}>
+            <MyJobItem>
+              <h2>{job.title}</h2>
+              {/* <p>{job.description}</p> */}
+              <div dangerouslySetInnerHTML={{ __html: job.description }} />
+            </MyJobItem>
+          </Link>
         ))}
     </MyComponent>
   )
@@ -46,4 +48,5 @@ const MyJobItem = styled.div`
   max-inline-size: 600px;
   margin: 0 auto;
   padding: 20px;
+  cursor: pointer;
 `
