@@ -1,16 +1,27 @@
-import { useContext } from "react"
+import { useState, useEffect, useContext } from "react"
 import styled from "styled-components"
 
 import { SearchContext } from "../contexts/SearchContextProvider"
 
-const JobList = ({ jobList }) => {
+const JobList = () => {
   const { searchFor } = useContext(SearchContext)
+
+  const [jobList, setJobList] = useState(null)
+
+  useEffect(async () => {
+    const jobList_res = await fetch(
+      `https://us-central1-wands-2017.cloudfunctions.net/githubjobs?description=${searchFor}`
+    )
+    const jobListData = await jobList_res.json()
+
+    setJobList(jobListData)
+  }, [searchFor])
 
   return (
     <MyComponent>
       {console.log(jobList)}
       {jobList
-        .filter(job => job.description.toLowerCase().includes(searchFor))
+        ?.filter(job => job.description.toLowerCase().includes(searchFor))
         .map(job => (
           <MyJobItem key={job.id}>
             <h2>{job.title}</h2>

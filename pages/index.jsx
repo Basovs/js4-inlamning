@@ -2,7 +2,7 @@ import Head from "next/head"
 import JobList from "../components/JobList"
 import SearchForm from "../components/SearchForm"
 
-export default function Home({ jobList }) {
+export default function Home() {
   return (
     <>
       <Head>
@@ -12,21 +12,20 @@ export default function Home({ jobList }) {
 
       <SearchForm />
 
-      <JobList jobList={jobList} />
+      <JobList />
     </>
   )
 }
 
-export async function getStaticProps() {
-  // Fetching whole jobList for static props data
-  const jobList_res = await fetch(
-    "https://us-central1-wands-2017.cloudfunctions.net/githubjobs?description=javascript"
-  )
-  const jobList = await jobList_res.json()
+// export async function getServerSideProps() {
+//   const jobList_res = await fetch(
+//     `https://us-central1-wands-2017.cloudfunctions.net/githubjobs?description=${""}`
+//   )
+//   const jobList = await jobList_res.json()
 
-  return {
-    props: {
-      jobList,
-    },
-  }
-}
+//   return {
+//     props: {
+//       jobList,
+//     },
+//   }
+// }

@@ -22,7 +22,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "components/__tests__/BtnFilled.test.js", "__tests__/.test.tsx"  ],
   "exclude": [
     "node_modules"
   ]
