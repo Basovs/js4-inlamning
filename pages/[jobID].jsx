@@ -6,8 +6,11 @@ const SpecificJobPage = ({ job }) => {
     <MyComponent>
       <MyWrapper>
         <BtnBack />
-        <h1>{job.title}</h1>
+        <h2>{job.title}</h2>
+        <strong>{job.type}</strong>
+        <a href={job.company_url}>Company url</a>
         <div dangerouslySetInnerHTML={{ __html: job.description }} />
+        <img src={job.company_logo} />
       </MyWrapper>
     </MyComponent>
   )
