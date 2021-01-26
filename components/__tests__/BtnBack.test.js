@@ -18,13 +18,13 @@ describe("<BtnBack/>", () => {
     )
   })
 
-  it("onClick function works", () => {
-    const wrapper = shallow(
-      <BrowserRouter>
-        <BtnBack isHomeDummy={true} />
-      </BrowserRouter>
-    )
+  // it("onClick function works", () => {
+  //   const wrapper = shallow(
+  //     <BrowserRouter>
+  //       <BtnBack isHomeDummy={true} />
+  //     </BrowserRouter>
+  //   )
 
-    expect(wrapper.find("a").props().onClick())
-  })
+  //   expect(wrapper.find("a").props().onClick())
+  // })
 })

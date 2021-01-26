@@ -24,9 +24,9 @@ describe("<SearchForm/>", () => {
     )
   })
 
-  it("isSearching initial state false?", () => {
-    const wrapper = shallow(<SearchForm />)
+  // it("isSearching initial state false?", () => {
+  //   const wrapper = shallow(<SearchForm />)
 
-    expect(wrapper.state.isSearching).toBe(false)
-  })
+  //   expect(wrapper.state.isSearching).toBe(false)
+  // })
 })
