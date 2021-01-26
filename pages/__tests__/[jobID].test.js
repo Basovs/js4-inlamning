@@ -12,8 +12,8 @@ describe("<SpecificJobPage/>", () => {
   const payload = {
     type: "type",
     title: "title",
-    company_url: "https://www.company.url",
-    description: "<p>description</p>",
+    company_url: "company_url",
+    description: "description",
     company_logo: "company_logo",
   }
 
@@ -34,14 +34,14 @@ describe("<SpecificJobPage/>", () => {
   it("company_url in 'a' tag", () => {
     const wrapper = shallow(<SpecificJobPage job={payload} />)
 
-    expect(wrapper.find("a").prop("href")).toEqual("https://www.company.url")
+    expect(wrapper.find("a").prop("href")).toEqual("company_url")
   })
 
   it("description in 'div' tag", () => {
     const wrapper = shallow(<SpecificJobPage job={payload} />)
 
     expect(wrapper.find("div").prop("dangerouslySetInnerHTML")).toEqual({
-      __html: "<p>description</p>",
+      __html: "description",
     })
   })
 
