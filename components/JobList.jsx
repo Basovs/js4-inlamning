@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react"
+import { useState, useEffect, useContext } from "react"
 import styled from "styled-components"
 import Link from "next/link"
 
@@ -13,14 +13,22 @@ const JobList = () => {
     searchInContext,
   } = useContext(SearchContext)
 
+  const [jobListToRender, setJobListToRender] = useState([])
+
+  const searchFromContextFirst = () => {
+    const matchFromContext = jobListFromContext.filter(job => {
+      job.title.includes("a")
+    })
+
+    console.log(matchFromContext)
+    setJobListToRender(matchFromContext)
+
+    // console.log(jobListFromContext)
+    console.log(jobListToRender)
+  }
+
   useEffect(async () => {
-    // check against context
-    jobListFromContext
-      .filter(job => {
-        job.description.includes(searchInContext)
-      })
-      .map(item => console.log(item))
-    // console.log(checkAgainstContextData)
+    searchFromContextFirst()
 
     const jobList_res = await fetch(
       `https://us-central1-wands-2017.cloudfunctions.net/githubjobs?description=${searchFor}`
@@ -28,7 +36,7 @@ const JobList = () => {
     const jobListData = await jobList_res.json()
 
     setJobListFromContext(jobListData)
-    console.log(jobListFromContext)
+    // console.log(jobListFromContext)
 
     jobListData.forEach(({ id }) => {
       jobListFromContext[id] = jobListFromContext[id]
