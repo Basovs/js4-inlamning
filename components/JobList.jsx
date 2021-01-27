@@ -97,12 +97,15 @@ const MyComponent = styled.div`
   align-items: center;
 
   padding: 100px 20px 0;
+
+  a {
+    margin: 20px 0;
+  }
 `;
 
 const MyJobCard = styled.div`
   inline-size: 100%;
   max-inline-size: 600px;
-  margin: 20px 0;
   padding: 20px;
   background-color: var(--light-gray-color);
   border-radius: 10px;
