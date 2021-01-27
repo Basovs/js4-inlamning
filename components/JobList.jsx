@@ -42,8 +42,13 @@ const JobList = () => {
         console.log("matchFromContextArr.length === 0");
 
         // FetchData again
-        setJobListFromContext(await fetchData());
+        setJobListFromContext([...jobListFromContext, ...(await fetchData())]);
         setJobListToRender(await fetchData());
+
+        console.log(
+          "jobListFromContext from refetch and readd",
+          jobListFromContext
+        );
       } else {
         console.log("!matchFromContextArr.length === 0");
 
