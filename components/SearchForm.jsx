@@ -12,7 +12,6 @@ const SearchForm = () => {
     setInstantSearch,
     isSearching,
     setIsSearching,
-    setSearchInContext,
   } = useContext(SearchContext);
 
   const [value, setValue] = useState("");

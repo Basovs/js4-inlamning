@@ -11,7 +11,6 @@ const JobList = () => {
     instantSearch,
     jobListFromContext,
     setJobListFromContext,
-    searchInContext,
   } = useContext(SearchContext);
 
   const [jobListToRender, setJobListToRender] = useState([]);

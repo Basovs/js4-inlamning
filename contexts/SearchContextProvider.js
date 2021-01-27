@@ -7,7 +7,6 @@ const SearchContextProvider = ({ children }) => {
   const [instantSearch, setInstantSearch] = useState("");
   const [isSearching, setIsSearching] = useState(false);
   const [jobListFromContext, setJobListFromContext] = useState([]);
-  const [searchInContext, setSearchInContext] = useState("");
 
   return (
     <SearchContext.Provider
@@ -20,8 +19,6 @@ const SearchContextProvider = ({ children }) => {
         setIsSearching,
         jobListFromContext,
         setJobListFromContext,
-        searchInContext,
-        setSearchInContext,
       }}
     >
       {children}
