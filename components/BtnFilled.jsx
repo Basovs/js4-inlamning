@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
-const BtnFilled = ({ title, path, type, form }) => {
-  return <MyBtn>{title || "button"}</MyBtn>;
-};
+const BtnFilled = ({ title }) => {
+  return <MyBtn>{title || "button"}</MyBtn>
+}
 
-export default BtnFilled;
+export default BtnFilled
 
 const MyBtn = styled.button`
   background-color: var(--dark-gray-color);
@@ -13,4 +13,4 @@ const MyBtn = styled.button`
   color: #fff;
   padding: 0 32px;
   block-size: 52px;
-`;
+`

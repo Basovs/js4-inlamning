@@ -12,6 +12,7 @@ const SearchForm = () => {
     setInstantSearch,
     isSearching,
     setIsSearching,
+    setSearchInContext,
   } = useContext(SearchContext)
 
   const [value, setValue] = useState("")
@@ -20,7 +21,7 @@ const SearchForm = () => {
   // This is for onSubmitSearch
   const handleOnSubmit = e => {
     e.preventDefault()
-
+    setSearchInContext(value)
     setSearchFor(value.replace(/ /g, "+"))
     setIsSearching(false)
   }

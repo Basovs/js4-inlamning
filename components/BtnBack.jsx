@@ -1,7 +1,7 @@
 import { useRouter } from "next/router"
 import styled from "styled-components"
 
-const BtnBack = () => {
+const BtnBack = ({ isHomeDummy }) => {
   const router = useRouter()
   const isHome = router.pathname === "/"
 
@@ -13,7 +13,7 @@ const BtnBack = () => {
   return (
     // Div for keeping its place in layout
     <MyComponent>
-      {!isHome && (
+      {(!isHome || isHomeDummy) && (
         <a href="#" onClick={goBack}>
           {"<"} Back
         </a>
