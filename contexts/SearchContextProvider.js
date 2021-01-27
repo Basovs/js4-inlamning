@@ -1,13 +1,13 @@
-import { useState, createContext } from "react"
+import { useState, createContext } from "react";
 
-export const SearchContext = createContext({})
+export const SearchContext = createContext({});
 
 const SearchContextProvider = ({ children }) => {
-  const [searchFor, setSearchFor] = useState("")
-  const [instantSearch, setInstantSearch] = useState("")
-  const [isSearching, setIsSearching] = useState(false)
-  const [jobListFromContext, setJobListFromContext] = useState([])
-  const [searchInContext, setSearchInContext] = useState("")
+  const [searchFor, setSearchFor] = useState("");
+  const [instantSearch, setInstantSearch] = useState("");
+  const [isSearching, setIsSearching] = useState(false);
+  const [jobListFromContext, setJobListFromContext] = useState([]);
+  const [searchInContext, setSearchInContext] = useState("");
 
   return (
     <SearchContext.Provider
@@ -26,7 +26,7 @@ const SearchContextProvider = ({ children }) => {
     >
       {children}
     </SearchContext.Provider>
-  )
-}
+  );
+};
 
-export default SearchContextProvider
+export default SearchContextProvider;

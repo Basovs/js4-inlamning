@@ -1,9 +1,9 @@
-import { useState, useEffect, useContext } from "react"
-import Link from "next/link"
+import { useState, useEffect, useContext } from "react";
+import Link from "next/link";
 
-import styled, { css } from "styled-components"
-import BtnFilled from "./BtnFilled"
-import { SearchContext } from "../contexts/SearchContextProvider"
+import styled, { css } from "styled-components";
+import BtnFilled from "./BtnFilled";
+import { SearchContext } from "../contexts/SearchContextProvider";
 
 const SearchForm = () => {
   const {
@@ -13,35 +13,37 @@ const SearchForm = () => {
     isSearching,
     setIsSearching,
     setSearchInContext,
-  } = useContext(SearchContext)
+  } = useContext(SearchContext);
 
-  const [value, setValue] = useState("")
-  const [jobList, setJobList] = useState(null)
+  const [value, setValue] = useState("");
+  const [jobList, setJobList] = useState(null);
 
   // This is for onSubmitSearch
   const handleOnSubmit = e => {
-    e.preventDefault()
-    setSearchInContext(value)
-    setSearchFor(value.replace(/ /g, "+"))
-    setIsSearching(false)
-  }
+    e.preventDefault();
+    setInstantSearch(value);
+    setSearchFor(value.replace(/ /g, "+"));
+    setIsSearching(false);
+  };
 
   // This is for instaSearch
   const handleOnChange = e => {
-    e.preventDefault()
-    setIsSearching(true)
+    e.preventDefault();
+    setIsSearching(true);
 
-    setInstantSearch(e.target.value.replace(/ /g, "+"))
-  }
+    setInstantSearch(value);
+
+    // setInstantSearch(e.target.value.replace(/ /g, "+"))
+  };
 
   useEffect(async () => {
     const jobList_res = await fetch(
       `https://us-central1-wands-2017.cloudfunctions.net/githubjobs?description=${instantSearch}`
-    )
-    const jobListData = await jobList_res.json()
+    );
+    const jobListData = await jobList_res.json();
 
-    setJobList(jobListData)
-  }, [instantSearch])
+    setJobList(jobListData);
+  }, [instantSearch]);
 
   return (
     <MyComponent onSubmit={handleOnSubmit} isSearching={isSearching}>
@@ -51,8 +53,8 @@ const SearchForm = () => {
             type="text"
             placeholder="Atrast sludinājumu"
             onChange={e => {
-              handleOnChange(e)
-              setValue(e.target.value.toLowerCase())
+              handleOnChange(e);
+              setValue(e.target.value.toLowerCase());
             }}
             value={value}
             onClick={() => setIsSearching(true)}
@@ -75,10 +77,10 @@ const SearchForm = () => {
         )}
       </MyInnerWrapper>
     </MyComponent>
-  )
-}
+  );
+};
 
-export default SearchForm
+export default SearchForm;
 
 const MyComponent = styled.div`
   position: fixed;
@@ -99,7 +101,7 @@ const MyComponent = styled.div`
       block-size: 100vh;
       background: #00000050;
     `}
-`
+`;
 
 const MyInnerWrapper = styled.div`
   margin: 30px 0 0;
@@ -108,7 +110,7 @@ const MyInnerWrapper = styled.div`
 
   display: flex;
   justify-content: center;
-`
+`;
 
 const MySearchContainer = styled.form`
   position: fixed;
@@ -134,7 +136,7 @@ const MySearchContainer = styled.form`
       font-weight: 300;
     }
   }
-`
+`;
 const MyInstantResultBox = styled.div`
   inline-size: 100%;
   max-inline-size: 640px;
@@ -142,4 +144,4 @@ const MyInstantResultBox = styled.div`
   padding: 100px 20px 20px;
   margin: -20px 0 0;
   border-radius: 10px;
-`
+`;
