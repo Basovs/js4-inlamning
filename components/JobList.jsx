@@ -5,16 +5,17 @@ import Link from "next/link"
 import { SearchContext } from "../contexts/SearchContextProvider"
 // import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript"
 
-const JobList = ({ dummyJobList }) => {
+const JobList = () => {
   const {
     searchFor,
-    jobListToRender,
-    setJobListToRender,
+    jobListFromContext,
+    setJobListFromContext,
     searchInContext,
   } = useContext(SearchContext)
 
   useEffect(async () => {
-    const checkAgainstContextData = jobListToRender
+    // check against context
+    jobListFromContext
       .filter(job => {
         job.description.includes(searchInContext)
       })
@@ -26,16 +27,17 @@ const JobList = ({ dummyJobList }) => {
     )
     const jobListData = await jobList_res.json()
 
-    setJobListToRender(jobListData)
+    setJobListFromContext(jobListData)
+    console.log(jobListFromContext)
 
     jobListData.forEach(({ id }) => {
-      jobListToRender[id] = jobListToRender[id]
+      jobListFromContext[id] = jobListFromContext[id]
     })
 
-    // console.log(jobListToRender)
+    // console.log(jobListFromContext)
 
     // Extract ID from object for better performance and to check against for not making dublicated jobItems in array
-    // jobListToRender.reduce(
+    // jobListFromContext.reduce(
     //   (
     //     res,
     //     {
@@ -74,10 +76,10 @@ const JobList = ({ dummyJobList }) => {
 
   return (
     <MyComponent>
-      {jobListToRender?.length === 0 ? (
+      {jobListFromContext?.length === 0 ? (
         <p>No jobs found</p>
       ) : (
-        jobListToRender?.map(job => (
+        jobListFromContext?.map(job => (
           <Link key={job.id} href={`/${job.id}`}>
             <a>
               <MyJobCard>
